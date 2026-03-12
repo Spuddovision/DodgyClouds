@@ -83,10 +83,13 @@ window.onload = function()
     loadSounds();
     document.addEventListener("keydown", flopWing);
 
-    document.addEventListener("touchstart", function(e) {
+    document.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    flopWing(e);
-}, { passive: false });
+    flopWing({ code: "Touch" });
+    });
+    document.addEventListener("mousedown", () => {
+    flopWing({ code: "Touch" });
+    });
 }
   
 function update()
@@ -186,22 +189,14 @@ function spawnClouds()
 
 function flopWing (control)
 {
-    if (control.code == "Space" || control.code == "ArrowUp")
+    const validInputs = ["Space", "PageUp", "Touch"];
+    if (validInputs.includes(control.code))
     {
         wingFlopY = -6;
         playSound(flopSound);
         if (isOver)
         {
             restartGame();
-        }
-    }
-    else
-    {
-        wingFlopY = -6;
-        playSound(flopSound);
-        if (isOver)
-        {
-           restartGame();
         }
     }
 }
