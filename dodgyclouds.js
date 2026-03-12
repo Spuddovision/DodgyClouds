@@ -82,6 +82,11 @@ window.onload = function()
 
     loadSounds();
     document.addEventListener("keydown", flopWing);
+
+    document.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    flopWing(e);
+}, { passive: false });
 }
   
 function update()
@@ -129,20 +134,20 @@ function update()
     }
 
     gameView.fillStyle = "deepskyblue";
-    gameView.font = "60px monospace";
     gameView.textAlign = "center";
     gameView.textBaseline = "top";
-    gameView.fillText("Score:"   + score, viewPort.width / 2, 10);   
+    gameView.font = `${getFontSize(60)}px monospace`;
+    gameView.fillText("Score: " + score, viewPort.width / 2, 10);   
 
     if (isOver)
     {
-        gameView.font = "100px monospace";
         gameView.fillStyle = "green";
         gameView.textAlign = "center";
         gameView.textBaseline = "middle";
+        gameView.font = `${getFontSize(100)}px monospace`;
         gameView.fillText("OUT OF FUEL", viewPort.width / 2, viewPort.height / 2);
 
-        gameView.font = "20px monospace";
+        gameView.font = `${getFontSize(20)}px monospace`;
         gameView.fillText("PRESS [SPACE]/[PgUp] to restart", viewPort.width / 2, (viewPort.height / 2) + 60);   
     }
 }
@@ -187,6 +192,24 @@ function flopWing (control)
         playSound(flopSound);
         if (isOver)
         {
+            restartGame();
+        }
+    }
+    else
+    {
+        wingFlopY = -6;
+        playSound(flopSound);
+        if (isOver)
+        {
+           restartGame();
+        }
+    }
+}
+
+function restartGame()
+{
+    if (isOver)
+        {
             wingMan.y = wingManY;
             cloudArray = [];
             score = 0;
@@ -194,7 +217,6 @@ function flopWing (control)
             bgMusic.currentTime = 0;
             bgMusic.play().catch(e => console.log("Audio failed:", e));
         }
-    }
 }
 
 function hitDetect(player, other)
@@ -211,8 +233,20 @@ document.addEventListener("keydown", () =>
     }
 , { once: true });
 
-function playSound(audio) {
+function playSound(audio)
+{
     let clone = audio.cloneNode();
     clone.volume = flopSound.volume; 
     clone.play().catch(e => console.log("Audio failed:", e));
 }
+
+function getFontSize(baseSize)
+{
+    return Math.max(baseSize * (window.innerWidth / 1024), baseSize * 0.5);
+}   
+
+window.addEventListener('resize', () =>
+{
+    viewPort.width = window.innerWidth;
+    viewPort.height = window.innerHeight;
+});   
