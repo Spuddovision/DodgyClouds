@@ -1,0 +1,75 @@
+body {
+    image-rendering: pixelated;
+    font-family: monospace;
+    text-align: center;
+    background: linear-gradient(SteelBlue 0%, DeepSkyBlue 50%, Azure 75%, #657392 90%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+    margin: 0;
+}
+#mainMenu
+{
+    background-image: url("/AssetFolder/MBG.png");
+    background-size: 100% auto;
+    margin: 0 auto;
+    display: block;
+    justify-content:center;
+}
+img {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    scale: 100%;
+}
+.button {
+    border-radius: 2em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+    transition: all 0.3s ease;
+
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.pulse {
+    background-color: #3498db;
+    color: white;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+h1 {
+    font-size: 40px;
+    display: inline-block;
+    padding-left: 1em;
+    border-left: 6px solid azure;
+    color: azure;
+    margin-top: 5%;
+    margin-bottom: 20%;
+}
+h2
+{
+    display: inline-block;
+    padding-left: 1em;
+    border-left: 6px solid deepskyblue;
+    color: deepskyblue;
+}
+#viewPort {
+    display: block;
+    background-image: url("/AssetFolder/Clouds.png");
+}
