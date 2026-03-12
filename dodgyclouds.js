@@ -36,7 +36,7 @@ let bottomCloudImage;
 let cloudSpeedX = -2;
 
 // Sound effects
-let flopSound = new Audio("./AssetFolder/Sounds/Sputter.mp3");
+let flopSound = new Audio("./AssetFolder/Sounds/Sputter.mp3"); 
 let cloudPassSound = new Audio("./AssetFolder/Sounds/studiokolomna-fast-whoosh-118248.mp3");
 let dieSound = new Audio("./AssetFolder/Sounds/small-explosion by DennisH18.mp3");
 

@@ -10,7 +10,7 @@ body {
 }
 #mainMenu
 {
-    background-image: url("/AssetFolder/MBG.png");
+    background-image: url("./AssetFolder/MBG.png");
     background-size: 100% auto;
     margin: 0 auto;
     display: block;
@@ -71,5 +71,5 @@ h2
 }
 #viewPort {
     display: block;
-    background-image: url("/AssetFolder/Clouds.png");
+    background-image: url("./AssetFolder/Clouds.png");
 }
